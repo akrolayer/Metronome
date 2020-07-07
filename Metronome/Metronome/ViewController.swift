@@ -12,6 +12,7 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet var pickerView: UIPickerView!
     
+    @IBOutlet var BPMLabel: UILabel!
     
     var bpmArray:[Int] = ([Int])(60...660)
     
@@ -55,6 +56,8 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
             return beatArray[row]
         }
     }
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        BPMLabel.text! += audioPlayer.calcQuarterNotes(BPM: String(bpmArray[pickerView.selectedRow(inComponent: 0)]), Notes: "4")
+    }
 }
 

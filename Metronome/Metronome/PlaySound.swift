@@ -10,18 +10,6 @@ import AVFoundation
 import Combine
 
 class PlaySound{
-    func playSound(){
-        var sound = AVAudioPlayer()
-        if let path = Bundle.main.path(forResource: "2_cymbal", ofType: "mp3"){
-            do{
-                sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-                print("Playing sound")
-                sound.play()
-            }catch{
-                print("Could not file path")
-            }
-        }
-    }
     func playSound2(){
         // dtmf-8.caf    TouchTone
         var soundIdRing:SystemSoundID = 1208

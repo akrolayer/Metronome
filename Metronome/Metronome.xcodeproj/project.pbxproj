@@ -14,6 +14,7 @@
 		E1B9EC9124B0646800CE5EAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1B9EC9024B0646800CE5EAE /* Assets.xcassets */; };
 		E1B9EC9424B0646800CE5EAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B9EC9224B0646800CE5EAE /* LaunchScreen.storyboard */; };
 		E1B9EC9C24B064E700CE5EAE /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */; };
+		E1B9ECA224B4B72E00CE5EAE /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E1B9EC9324B0646800CE5EAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1B9EC9524B0646800CE5EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NextViewController.swift; path = ../NextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				E1B9EC8724B0646200CE5EAE /* AppDelegate.swift */,
+				E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */,
 				E1B9EC8924B0646200CE5EAE /* SceneDelegate.swift */,
 				E1B9EC8B24B0646200CE5EAE /* ViewController.swift */,
 				E1B9EC8D24B0646200CE5EAE /* Main.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B9ECA224B4B72E00CE5EAE /* NextViewController.swift in Sources */,
 				E1B9EC8C24B0646200CE5EAE /* ViewController.swift in Sources */,
 				E1B9EC9C24B064E700CE5EAE /* PlaySound.swift in Sources */,
 				E1B9EC8824B0646200CE5EAE /* AppDelegate.swift in Sources */,
