@@ -10,7 +10,7 @@ import AVFoundation
 import Combine
 
 class PlaySound{
-    func playSound2(){
+    func playSound(){
         // dtmf-8.caf    TouchTone
         var soundIdRing:SystemSoundID = 1208
          
@@ -26,8 +26,8 @@ class PlaySound{
             else { return false }
         var i = 0
         
-        while(i < 8){
-            playSound2()
+        while(i < 12){
+            playSound()
             Thread.sleep(forTimeInterval: 60 / bpm)
             i += 1
         }

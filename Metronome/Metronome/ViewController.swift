@@ -14,6 +14,8 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet var BPMLabel: UILabel!
     
+    @IBOutlet var PlayButton: UIButton!
+    
     var bpmArray:[Int] = ([Int])(60...660)
     
     let beatArray = ["4","8","12","16","24","32","48","64"]
@@ -22,18 +24,30 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.dataSource = self
-        
+        pickerView.selectRow(90, inComponent: 0, animated: false)
+        BPMLabel.text = String(bpmArray[pickerView.selectedRow(inComponent: 0)])
         // Do any additional setup after loading the view.
     }
 
     var audioPlayer = PlaySound()
     
     @IBAction func Button1(_ sender: Any) {
-        let bpm = audioPlayer.calcQuarterNotes(BPM: String(bpmArray[pickerView.selectedRow(inComponent: 0)]),Notes: beatArray[pickerView.selectedRow(inComponent: 1)])
-
+        let bpm = calcBPM()
+        PlayButton.isEnabled = false
         audioPlayer.metronome(BPM: bpm)
+        PlayButton.isEnabled = true
     }
     
+
+    @IBAction func NextViewButton(_ sender: Any) {
+        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TempoKeep") as! NextViewController
+        
+        //ViewController2のtextにtextFieldのテキストを代入
+        vc2.bpm = calcBPM()
+        
+        //NavigationControllerを継承したViewControllerを遷移
+        self.navigationController?.pushViewController(vc2, animated: true)
+    }
     //UIPickerViewの列の数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -57,7 +71,10 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        BPMLabel.text! += audioPlayer.calcQuarterNotes(BPM: String(bpmArray[pickerView.selectedRow(inComponent: 0)]), Notes: "4")
+        BPMLabel.text! = calcBPM()
+    }
+    func calcBPM()->String{
+        audioPlayer.calcQuarterNotes(BPM: String(bpmArray[pickerView.selectedRow(inComponent: 0)]),Notes: beatArray[pickerView.selectedRow(inComponent: 1)])
     }
 }
 
