@@ -14,38 +14,31 @@ class NextViewController: UIViewController {
     
     @IBOutlet var stopButton: UIButton!
     
-    @IBOutlet var label: UILabel!
     
-    
-    var count = 0
     var timer:Timer!
-    var TimerDisplayed:Double = 0.0
+    var Count:Int = 0
     var bpm:String = ""
+    var interval:Double = 0.0
+    var countdown:Double = 0.0
+    var playcount = 4
+    var notplaycount = 26
+    var audioPlayer = PlaySound()
     
-    
-    let interval = 0.1
     override func viewDidLoad() {
         super.viewDidLoad()
         stopButton.isEnabled = false
-        label.text = bpm
+        //label.text = bpm
+        interval = 60 / Double(bpm)!
+        countdown = interval * 30.0
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func start(_ sender: Any) {
         startButton.isEnabled = false
         stopButton.isEnabled = true
         
         startTimer()
+        
     }
     
     @IBAction func stop(_ sender: Any) {
@@ -53,17 +46,23 @@ class NextViewController: UIViewController {
         stopButton.isEnabled = false
         
         timer.invalidate()
+        Count = 0
+        countdown = interval * 30.0
     }
     func startTimer(){
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
     }
     @objc func Action(){
-        TimerDisplayed += interval
-        label.text = String(TimerDisplayed)
-        let now = Date()
+        //音無しにして、指定回数後再生するようにする
+        if(Count <= playcount){
+            audioPlayer.playSound()
+        }
+        if(Count == playcount + notplaycount + 1){
+            audioPlayer.playSound()
+            self.stop(stopButton as Any)
+        }
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "ss:S"
-        print(formatter.string(from: now))
+        Count += 1
+        //label.text = String(Count)
     }
 }
