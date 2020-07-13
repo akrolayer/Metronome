@@ -14,31 +14,35 @@ class NextViewController: UIViewController {
     
     @IBOutlet var stopButton: UIButton!
     
+    @IBOutlet var label: UILabel!
     
+    @IBOutlet var descLabel: UILabel!
     var timer:Timer!
     var Count:Int = 0
     var bpm:String = ""
-    var interval:Double = 0.0
-    var countdown:Double = 0.0
+    var interval:Decimal = 0.0
+    let sixty:Decimal = 60
     var playcount = 4
-    var notplaycount = 26
+    let judgeCount:Decimal = 6
     var audioPlayer = PlaySound()
+    var pushTiming = 0.0
+    var correctTiming:Decimal = 0.0
+    var startTiming:CFAbsoluteTime = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stopButton.isEnabled = false
         //label.text = bpm
-        interval = 60 / Double(bpm)!
-        countdown = interval * 30.0
-        
+        interval = sixty / Decimal.init(string: bpm)!
+        descLabel.text = "\(judgeCount)回鳴ったタイミングでボタンを押してください。最初の4回は再生されます"
+        print(interval)
     }
 
     @IBAction func start(_ sender: Any) {
         startButton.isEnabled = false
         stopButton.isEnabled = true
-        
         startTimer()
-        
+        startTiming = CFAbsoluteTimeGetCurrent()
     }
     
     @IBAction func stop(_ sender: Any) {
@@ -46,23 +50,30 @@ class NextViewController: UIViewController {
         stopButton.isEnabled = false
         
         timer.invalidate()
-        Count = 0
-        countdown = interval * 30.0
+        correctTiming = interval * judgeCount
+        let elapsed = CFAbsoluteTimeGetCurrent() - startTiming
+        print(elapsed)
+        let elapsedString = String(elapsed)
+        let diff = Decimal(string:elapsedString)! - correctTiming
+        label.text = "\(diff)秒ずれています"
     }
     func startTimer(){
-        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
+        Count = 0
+        let NSDecimalInterval = NSDecimalNumber(decimal: interval)
+        let DoubleInterval = Double(truncating: NSDecimalInterval)
+        timer = Timer.scheduledTimer(timeInterval: DoubleInterval as! Double, target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
     }
     @objc func Action(){
         //音無しにして、指定回数後再生するようにする
-        if(Count <= playcount){
+        if(Count < playcount){
             audioPlayer.playSound()
         }
-        if(Count == playcount + notplaycount + 1){
-            audioPlayer.playSound()
-            self.stop(stopButton as Any)
-        }
-        
+
+        //if(Count == judgeCount - 1){
+          //   correctTiming = CFAbsoluteTimeGetCurrent()
+        //}
+        label.text = String(Count)
         Count += 1
-        //label.text = String(Count)
+
     }
 }

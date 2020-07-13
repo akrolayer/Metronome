@@ -24,8 +24,9 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.selectRow(90, inComponent: 0, animated: false)
+        pickerView.selectRow(0, inComponent: 0, animated: false)
         BPMLabel.text = String(bpmArray[pickerView.selectedRow(inComponent: 0)])
+        
         // Do any additional setup after loading the view.
     }
 
