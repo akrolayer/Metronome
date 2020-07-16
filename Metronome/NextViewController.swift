@@ -23,7 +23,7 @@ class NextViewController: UIViewController {
     var interval:Decimal = 0.0
     let sixty:Decimal = 60
     var playcount = 4
-    let judgeCount:Decimal = 6
+    let judgeCount:Decimal = 12
     var audioPlayer = PlaySound()
     var pushTiming = 0.0
     var correctTiming:Decimal = 0.0
@@ -35,7 +35,8 @@ class NextViewController: UIViewController {
         //label.text = bpm
         interval = sixty / Decimal.init(string: bpm)!
         descLabel.text = "\(judgeCount)回鳴ったタイミングでボタンを押してください。最初の4回は再生されます"
-        print(interval)
+        label.text = ""
+        print("interval = \(interval)")
     }
 
     @IBAction func start(_ sender: Any) {
@@ -52,16 +53,25 @@ class NextViewController: UIViewController {
         timer.invalidate()
         correctTiming = interval * judgeCount
         let elapsed = CFAbsoluteTimeGetCurrent() - startTiming
-        print(elapsed)
+        //print(elapsed)
         let elapsedString = String(elapsed)
         let diff = Decimal(string:elapsedString)! - correctTiming
-        label.text = "\(diff)秒ずれています"
+        
+        let diffPerBeat = diff / interval
+        let NSDecimaldiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
+        let doubleDiffPerBeat = Double(truncating: NSDecimaldiffPerBeat)
+        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat*1000) / 1000
+        label.text = "\(roundDoubleDiffPerBeat)拍ずれています"
+        
+        let items = ["\(bpm)で\(judgeCount)回、\(roundDoubleDiffPerBeat)拍ずれました。"]
+        let actibityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(actibityVC,animated: true,completion: nil)
     }
     func startTimer(){
         Count = 0
         let NSDecimalInterval = NSDecimalNumber(decimal: interval)
         let DoubleInterval = Double(truncating: NSDecimalInterval)
-        timer = Timer.scheduledTimer(timeInterval: DoubleInterval as! Double, target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: DoubleInterval , target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
     }
     @objc func Action(){
         //音無しにして、指定回数後再生するようにする
@@ -72,7 +82,7 @@ class NextViewController: UIViewController {
         //if(Count == judgeCount - 1){
           //   correctTiming = CFAbsoluteTimeGetCurrent()
         //}
-        label.text = String(Count)
+        //label.text = String(Count)
         Count += 1
 
     }
