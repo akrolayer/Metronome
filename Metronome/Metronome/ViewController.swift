@@ -41,13 +41,22 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     
 
     @IBAction func NextViewButton(_ sender: Any) {
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TempoKeep") as! NextViewController
+        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SirentKeep") as! NextViewController
         
         //ViewController2のtextにtextFieldのテキストを代入
         vc2.bpm = calcBPM()
         
         //NavigationControllerを継承したViewControllerを遷移
         self.navigationController?.pushViewController(vc2, animated: true)
+    }
+    @IBAction func KeepViewButton(_ sender: Any) {
+        let vc3 = self.storyboard?.instantiateViewController(withIdentifier: "TempoKeep") as! NextViewController
+        
+        //ViewController2のtextにtextFieldのテキストを代入
+        vc3.bpm = calcBPM()
+        
+        //NavigationControllerを継承したViewControllerを遷移
+        self.navigationController?.pushViewController(vc3, animated: true)
     }
     //UIPickerViewの列の数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
