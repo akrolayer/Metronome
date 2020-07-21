@@ -50,7 +50,7 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         self.navigationController?.pushViewController(vc2, animated: true)
     }
     @IBAction func KeepViewButton(_ sender: Any) {
-        let vc3 = self.storyboard?.instantiateViewController(withIdentifier: "TempoKeep") as! NextViewController
+        let vc3 = self.storyboard?.instantiateViewController(withIdentifier: "TempoKeep") as! NextViewController2
         
         //ViewController2のtextにtextFieldのテキストを代入
         vc3.bpm = calcBPM()

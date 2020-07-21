@@ -78,12 +78,6 @@ class NextViewController: UIViewController {
         if(Count < playcount){
             audioPlayer.playSound()
         }
-
-        //if(Count == judgeCount - 1){
-          //   correctTiming = CFAbsoluteTimeGetCurrent()
-        //}
-        //label.text = String(Count)
         Count += 1
-
     }
 }

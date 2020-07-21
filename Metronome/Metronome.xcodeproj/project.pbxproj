@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E1874DE124C344BC00B1D9C7 /* NextViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */; };
+		E1874DE324C6C3A200B1D9C7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */; };
 		E1B9EC8824B0646200CE5EAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC8724B0646200CE5EAE /* AppDelegate.swift */; };
 		E1B9EC8A24B0646200CE5EAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC8924B0646200CE5EAE /* SceneDelegate.swift */; };
 		E1B9EC8C24B0646200CE5EAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC8B24B0646200CE5EAE /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController2.swift; sourceTree = "<group>"; };
+		E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E1B9EC8424B0646200CE5EAE /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B9EC8724B0646200CE5EAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B9EC8924B0646200CE5EAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				E1B9EC8924B0646200CE5EAE /* SceneDelegate.swift */,
 				E1B9EC8B24B0646200CE5EAE /* ViewController.swift */,
 				E1B9EC8D24B0646200CE5EAE /* Main.storyboard */,
+				E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */,
 				E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */,
 				E1B9EC9024B0646800CE5EAE /* Assets.xcassets */,
 				E1B9EC9224B0646800CE5EAE /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 			files = (
 				E1B9ECA224B4B72E00CE5EAE /* NextViewController.swift in Sources */,
 				E1B9EC8C24B0646200CE5EAE /* ViewController.swift in Sources */,
+				E1874DE324C6C3A200B1D9C7 /* ResultViewController.swift in Sources */,
 				E1874DE124C344BC00B1D9C7 /* NextViewController2.swift in Sources */,
 				E1B9EC9C24B064E700CE5EAE /* PlaySound.swift in Sources */,
 				E1B9EC8824B0646200CE5EAE /* AppDelegate.swift in Sources */,

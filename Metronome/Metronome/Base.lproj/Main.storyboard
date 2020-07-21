@@ -168,6 +168,34 @@
             </objects>
             <point key="canvasLocation" x="1490" y="-95"/>
         </scene>
+        <!--Result View Controller-->
+        <scene sceneID="RKE-fd-NaA">
+            <objects>
+                <viewController storyboardIdentifier="result" id="EXQ-lm-Dhr" customClass="ResultViewController" customModule="Metronome" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Mf-SP-R6K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="結果" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHl-nY-XE5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="3Cl-t1-Gb6"/>
+                    </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="NHl-nY-XE5" id="h3c-lb-EBG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L40-3D-voK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2144.8000000000002" y="566.26686656671666"/>
+        </scene>
         <!--Next View Controller2-->
         <scene sceneID="1wF-8R-UgU">
             <objects>
@@ -183,6 +211,7 @@
                                     <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="start:" destination="ihn-ZU-CO7" eventType="touchUpInside" id="j9A-te-sIQ"/>
                                     <action selector="start:" destination="KPe-Kl-ReT" eventType="touchUpInside" id="vM9-XA-a4d"/>
                                 </connections>
                             </button>
@@ -193,6 +222,7 @@
                                     <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="stop:" destination="ihn-ZU-CO7" eventType="touchUpInside" id="eUu-0a-Qel"/>
                                     <action selector="stop:" destination="KPe-Kl-ReT" eventType="touchUpInside" id="rbx-V3-2Fb"/>
                                 </connections>
                             </button>
@@ -230,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0N-ov-pyT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="568"/>
+            <point key="canvasLocation" x="1488.8" y="567.16641679160421"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t4E-6Y-N0X">
