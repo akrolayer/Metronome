@@ -12,18 +12,23 @@ class ResultViewController: UIViewController {
     
     @IBOutlet var resultLabel: UILabel!
     var list:[Double]  = []
-    var count = 1
+    var playCount = 1
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        for result1 in list{
+            print("list = \(result1)\n")
+        }
         for result in list{
             print(result)
-            resultLabel.text?.append("\(count)回目：\(result)拍ずれています \n")
-            count += 1
+            resultLabel.text?.append("\(playCount)回目：\(result)拍ずれています \n")
+            playCount += 1
         }
         // Do any additional setup after loading the view.
     }
     
-
+    
+    
     /*
     // MARK: - Navigation
 
@@ -33,5 +38,4 @@ class ResultViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

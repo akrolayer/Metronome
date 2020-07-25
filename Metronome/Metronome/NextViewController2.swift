@@ -21,7 +21,7 @@ class NextViewController2: UIViewController {
     var bpm:String = ""
     var interval:Decimal = 0.0
     let sixty:Decimal = 60
-    var playcount = 4
+    var playCount = 4
     let judgeCount = 12
     var audioPlayer = PlaySound()
     var pushTiming = 0.0
@@ -29,10 +29,13 @@ class NextViewController2: UIViewController {
     var startTiming:CFAbsoluteTime = 0.0
     var tapCount: Int = 0
     var list:[Double] = []
+    var startFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startButton.isEnabled = true
         stopButton.isEnabled = false
+        
         //label.text = bpm
         interval = sixty / Decimal.init(string: bpm)!
         descLabel.text = "音が鳴るタイミングで右のボタンを\(judgeCount)回押してください。最初の４回は音が鳴ります"
@@ -43,15 +46,19 @@ class NextViewController2: UIViewController {
 
     @IBAction func start(_ sender: Any) {
         if tapCount == 0{
-            //startButton.isEnabled = false
+            startFlag = true
             stopButton.isEnabled = true
             startTimer()
             startTiming = CFAbsoluteTimeGetCurrent()
+            let image = UIImage(systemName: "music.note")
+            startButton.setImage(image, for: UIControl.State.normal)
         }
         let TapTiming = CFAbsoluteTimeGetCurrent() - startTiming
+        print("TapTiming=\(TapTiming)")
         let NSDecimalInterval = NSDecimalNumber(decimal: interval)
         let doubleInterval = Double(truncating: NSDecimalInterval)
         let roundDoubleInterval = round(doubleInterval * 1000) / 1000
+        print("doubleInterval=\(doubleInterval)")
         let diff = round(TapTiming * 1000) / 1000 - roundDoubleInterval * Double(tapCount)
         let diffPerBeat = diff / roundDoubleInterval
 
@@ -59,7 +66,8 @@ class NextViewController2: UIViewController {
         list.append(roundDiffPerBeat)
         
         if(tapCount == judgeCount){
-            self.stop(stopButton as Any)
+            let image = UIImage(named: "1_start")
+            startButton.setImage(image, for: UIControl.State.normal)
             //画面遷移する
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "result") as! ResultViewController
 
@@ -67,11 +75,16 @@ class NextViewController2: UIViewController {
             //NavigationControllerを継承したViewControllerを遷移
             self.navigationController?.pushViewController(vc, animated: true)
             
+            timer.invalidate()
+            list.removeAll()
+            tapCount = 0
         }
         tapCount += 1;
     }
     @IBAction func stop(_ sender: Any) {
-        startButton.isEnabled = true
+        startFlag = false
+        let image = UIImage(named: "1_start")
+        startButton.setImage(image, for: UIControl.State.normal)
         stopButton.isEnabled = false
         
         timer.invalidate()
@@ -85,10 +98,13 @@ class NextViewController2: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: DoubleInterval , target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
     }
     @objc func Action(){
-        if(Count < playcount){
+        if(Count < playCount){
             audioPlayer.playSound()
         }
         print(Count)
         Count += 1
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        stop(stopButton as Any)
     }
 }
