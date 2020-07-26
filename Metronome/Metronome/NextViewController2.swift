@@ -11,7 +11,6 @@ import UIKit
 class NextViewController2: UIViewController {
     
     @IBOutlet var descLabel: UILabel!
-    @IBOutlet var label: UILabel!
     @IBOutlet var startButton: UIButton!
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var beatButton: UIButton!
@@ -36,10 +35,10 @@ class NextViewController2: UIViewController {
         startButton.isEnabled = true
         stopButton.isEnabled = false
         
+        
         //label.text = bpm
         interval = sixty / Decimal.init(string: bpm)!
         descLabel.text = "音が鳴るタイミングで右のボタンを\(judgeCount)回押してください。最初の４回は音が鳴ります"
-        label.text = ""
         print("interval = \(interval)")
         // Do any additional setup after loading the view.
     }
@@ -72,6 +71,7 @@ class NextViewController2: UIViewController {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "result") as! ResultViewController
 
             vc.list = list
+            vc.bpm = bpm
             //NavigationControllerを継承したViewControllerを遷移
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -105,6 +105,8 @@ class NextViewController2: UIViewController {
         Count += 1
     }
     override func viewWillDisappear(_ animated: Bool) {
-        stop(stopButton as Any)
+        if stopButton.isEnabled == true{
+            stop(stopButton as Any)
+        }
     }
 }

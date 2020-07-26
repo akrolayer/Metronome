@@ -35,7 +35,6 @@ class NextViewController: UIViewController {
         //label.text = bpm
         interval = sixty / Decimal.init(string: bpm)!
         descLabel.text = "\(judgeCount)回鳴ったタイミングでボタンを押してください。最初の4回は再生されます"
-        label.text = ""
         print("interval = \(interval)")
     }
 
@@ -63,7 +62,7 @@ class NextViewController: UIViewController {
         let roundDoubleDiffPerBeat = round(doubleDiffPerBeat*1000) / 1000
         label.text = "\(roundDoubleDiffPerBeat)拍ずれています"
         
-        let items = ["\(bpm)で\(judgeCount)回、\(roundDoubleDiffPerBeat)拍ずれました。"]
+        let items = ["\(bpm)で\(judgeCount)回、\(roundDoubleDiffPerBeat)拍ずれたよ！"]
         let actibityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(actibityVC,animated: true,completion: nil)
     }

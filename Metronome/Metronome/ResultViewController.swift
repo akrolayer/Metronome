@@ -13,6 +13,7 @@ class ResultViewController: UIViewController {
     @IBOutlet var resultLabel: UILabel!
     var list:[Double]  = []
     var playCount = 1
+    var bpm:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,11 @@ class ResultViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    @IBAction func shareButton(_ sender: Any) {
+        let items = ["\(bpm)で\(list.count)回、最終的に\(list[list.endIndex])拍ずれたよ！"]
+        let actibityVC = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
+        present(actibityVC,animated: true,completion: nil)
+    }
     
     /*
     // MARK: - Navigation
