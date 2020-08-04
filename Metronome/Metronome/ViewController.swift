@@ -20,19 +20,22 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     
     let beatArray = ["4","8","12","16","24","32","48","64"]
     
-    var pickerView1 = UIPickerView()
+    var pickerView = UIPickerView()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerView1.delegate = self
-        pickerView1.dataSource = self
-        pickerView1.selectRow(60, inComponent: 0, animated: false)
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.selectRow(60, inComponent: 0, animated: false)
         
         let toolbar = UIToolbar(frame:CGRect(x: 0, y: UIScreen.main.bounds.size.height, width:UIScreen.main.bounds.size.width, height: 260.0))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
         toolbar.setItems([doneItem], animated: true)
-        self.BPMTextField.inputView = pickerView1
+        self.BPMTextField.inputView = pickerView
         self.BPMTextField.inputAccessoryView = toolbar
+        
+        self.beatTextField.inputView = pickerView
+        self.beatTextField.inputAccessoryView = toolbar
         
         // Do any additional setup after loading the view.
     }
@@ -87,16 +90,19 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
             return beatArray[row]
         }
     }
+    //列を選択した後の処理
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        BPMLabel.text! = calcBPM()
+        
     }
     func calcBPM()->String{
         audioPlayer.calcQuarterNotes(BPM: String(bpmArray[pickerView.selectedRow(inComponent: 0)]),Notes: beatArray[pickerView.selectedRow(inComponent: 1)])
     }
     @objc func done() {
         BPMTextField.endEditing(true)
-        BPMTextField.text = String(bpmArray[pickerView1.selectedRow(inComponent: 0)])
-        beatTextField.text = String(beatArray[pickerView1.selectedRow(inComponent: 1)])
+        beatTextField.endEditing(true)
+        BPMTextField.text = String(bpmArray[pickerView.selectedRow(inComponent: 0)])
+        beatTextField.text = String(beatArray[pickerView.selectedRow(inComponent: 1)])
+        BPMLabel.text! = calcBPM()
     }
 }
 
