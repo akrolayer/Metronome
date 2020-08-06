@@ -27,9 +27,12 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.selectRow(60, inComponent: 0, animated: false)
+        pickerView.accessibilityIdentifier = "picker"
+        pickerView.isAccessibilityElement = true
         
-        let toolbar = UIToolbar(frame:CGRect(x: 0, y: UIScreen.main.bounds.size.height, width:UIScreen.main.bounds.size.width, height: 260.0))
+        let toolbar = UIToolbar(frame:CGRect(x: 0, y: UIScreen.main.bounds.size.height, width:UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width / 4))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+        doneItem.accessibilityIdentifier = "done"
         toolbar.setItems([doneItem], animated: true)
         self.BPMTextField.inputView = pickerView
         self.BPMTextField.inputAccessoryView = toolbar
@@ -37,6 +40,9 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         self.beatTextField.inputView = pickerView
         self.beatTextField.inputAccessoryView = toolbar
         
+        BPMTextField.text = "120"
+        beatTextField.text = "4"
+        BPMLabel.text = "120"
         // Do any additional setup after loading the view.
     }
 

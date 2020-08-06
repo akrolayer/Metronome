@@ -27,9 +27,34 @@ class MetronomeUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+//        let bpmTextField = app.textFields["bpmTextBox"]
+//        bpmTextField.tap()
+//
+//        //XCUIApplication().pickerWheels["picker"].adjust(toPickerWheelValue: "130")
+//
+//        let firstPredicate = NSPredicate(format: "label BEGINSWITH 'PickerWheel'")
+//        let firstPicker = app.pickerWheels.element(matching: firstPredicate)
+//        firstPicker.adjust(toPickerWheelValue: "123")
+//        let secondPredicate = NSPredicate(format: "label BEGINSWITH 'PickerWheel")
+//        let secondPicker = app.pickerWheels.element(matching: secondPredicate)
+//        secondPicker.adjust(toPickerWheelValue: "16")
+//
+//        app.buttons["done"].tap()
+//
+//        XCTAssertEqual(app.staticTexts["changedBPMLabel"].label, "130")
+
+        
+        let silentkeepButton = app.buttons["silentKeepButton"]
+        silentkeepButton.tap()
+        
+        XCTAssert(app.buttons["startButton1"].exists)
+        XCTAssertTrue(app.buttons["startButton1"].isEnabled)
+        
+        XCTAssert(app.buttons["stopButton1"].exists)
+        XCTAssertFalse(app.buttons["stopButton1"].isEnabled)
     }
 
     func testLaunchPerformance() throws {

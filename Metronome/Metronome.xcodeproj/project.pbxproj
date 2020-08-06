@@ -45,7 +45,7 @@
 		E1B9EC9324B0646800CE5EAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1B9EC9524B0646800CE5EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
-		E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NextViewController.swift; path = ../NextViewController.swift; sourceTree = "<group>"; };
+		E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +66,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E15EF3BC24D9B5AE00988BC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E15EF3BD24D9B5C100988BC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1B9EC8D24B0646200CE5EAE /* Main.storyboard */,
+				E1B9EC9024B0646800CE5EAE /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E15EF3BE24D9B5D600988BC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1B9EC8B24B0646200CE5EAE /* ViewController.swift */,
+				E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */,
+				E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */,
+				E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E1874DE924D3240100B1D9C7 /* MetronomeUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,17 +124,13 @@
 		E1B9EC8624B0646200CE5EAE /* Metronome */ = {
 			isa = PBXGroup;
 			children = (
+				E15EF3BC24D9B5AE00988BC6 /* Model */,
+				E15EF3BD24D9B5C100988BC6 /* View */,
+				E15EF3BE24D9B5D600988BC6 /* Controller */,
 				E1B9EC8724B0646200CE5EAE /* AppDelegate.swift */,
-				E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */,
 				E1B9EC8924B0646200CE5EAE /* SceneDelegate.swift */,
-				E1B9EC8B24B0646200CE5EAE /* ViewController.swift */,
-				E1B9EC8D24B0646200CE5EAE /* Main.storyboard */,
-				E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */,
-				E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */,
-				E1B9EC9024B0646800CE5EAE /* Assets.xcassets */,
 				E1B9EC9224B0646800CE5EAE /* LaunchScreen.storyboard */,
 				E1B9EC9524B0646800CE5EAE /* Info.plist */,
-				E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */,
 			);
 			path = Metronome;
 			sourceTree = "<group>";
