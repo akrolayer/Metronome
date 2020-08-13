@@ -15,12 +15,19 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var BPMLabel: UILabel!
     
     @IBOutlet var PlayButton: UIButton!
+    @IBOutlet var SilentKeepButton: UIButton!
+    @IBOutlet var ConstantKeepButton: UIButton!
+    
+    var PlayOrStop: Bool = true
     
     var bpmArray:[Int] = ([Int])(60...660)
     
     let beatArray = ["4","8","12","16","24","32","48","64"]
     
     var pickerView = UIPickerView()
+    
+    var timer:Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,12 +56,26 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     var audioPlayer = PlaySound()
     
     @IBAction func Button1(_ sender: Any) {
-        let bpm = calcBPM()
-        PlayButton.isEnabled = false
-        audioPlayer.metronome(BPM: bpm)
-        PlayButton.isEnabled = true
+        if PlayOrStop{
+            let bpm = calcBPM()
+            SilentKeepButton.isEnabled = false
+            ConstantKeepButton.isEnabled = false
+            PlayOrStop = !PlayOrStop
+            PlayButton.setTitle("停止", for: UIControl.State.normal)
+            timer = Timer.scheduledTimer(timeInterval: 60 / Double(bpm)! , target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
+        }
+        else{
+            timer.invalidate()
+            SilentKeepButton.isEnabled = true
+            ConstantKeepButton.isEnabled = true
+            PlayButton.setTitle("再生", for: UIControl.State.normal)
+            PlayOrStop = !PlayOrStop
+        }
+        
     }
-    
+    @objc func Action(){
+        audioPlayer.playSound()
+    }
 
     @IBAction func NextViewButton(_ sender: Any) {
         let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SirentKeep") as! NextViewController
