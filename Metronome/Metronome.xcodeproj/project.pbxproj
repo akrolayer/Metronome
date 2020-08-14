@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E134857624E67E9B00E266B0 /* iPhone11Pro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E134857524E67E9B00E266B0 /* iPhone11Pro.storyboard */; };
+		E134857824E6803000E266B0 /* iPhone11.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E134857724E6803000E266B0 /* iPhone11.storyboard */; };
 		E1874DE124C344BC00B1D9C7 /* NextViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */; };
 		E1874DE324C6C3A200B1D9C7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */; };
 		E1874DEB24D3240100B1D9C7 /* MetronomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DEA24D3240100B1D9C7 /* MetronomeUITests.swift */; };
@@ -18,6 +20,7 @@
 		E1B9EC9424B0646800CE5EAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B9EC9224B0646800CE5EAE /* LaunchScreen.storyboard */; };
 		E1B9EC9C24B064E700CE5EAE /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */; };
 		E1B9ECA224B4B72E00CE5EAE /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */; };
+		E1BCEA0024E67A170064032F /* iPhone8plus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1BCE9FF24E67A160064032F /* iPhone8plus.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E134857524E67E9B00E266B0 /* iPhone11Pro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone11Pro.storyboard; sourceTree = "<group>"; };
+		E134857724E6803000E266B0 /* iPhone11.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone11.storyboard; sourceTree = "<group>"; };
 		E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController2.swift; sourceTree = "<group>"; };
 		E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E1874DE824D3240100B1D9C7 /* MetronomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +51,7 @@
 		E1B9EC9524B0646800CE5EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
 		E1B9ECA124B4B72E00CE5EAE /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
+		E1BCE9FF24E67A160064032F /* iPhone8plus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone8plus.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				E1B9EC8D24B0646200CE5EAE /* Main.storyboard */,
+				E1BCE9FF24E67A160064032F /* iPhone8plus.storyboard */,
+				E134857524E67E9B00E266B0 /* iPhone11Pro.storyboard */,
+				E134857724E6803000E266B0 /* iPhone11.storyboard */,
 				E1B9EC9024B0646800CE5EAE /* Assets.xcassets */,
 			);
 			path = View;
@@ -223,7 +232,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E134857624E67E9B00E266B0 /* iPhone11Pro.storyboard in Resources */,
+				E1BCEA0024E67A170064032F /* iPhone8plus.storyboard in Resources */,
 				E1B9EC9424B0646800CE5EAE /* LaunchScreen.storyboard in Resources */,
+				E134857824E6803000E266B0 /* iPhone11.storyboard in Resources */,
 				E1B9EC9124B0646800CE5EAE /* Assets.xcassets in Resources */,
 				E1B9EC8F24B0646200CE5EAE /* Main.storyboard in Resources */,
 			);

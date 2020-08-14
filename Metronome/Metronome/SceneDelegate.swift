@@ -17,9 +17,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        let storyboard:UIStoryboard = self.grabStoryboard()
+               
+        if let window = window{
+                  window.rootViewController = storyboard.instantiateInitialViewController() as UIViewController?
+               }
+          self.window?.makeKeyAndVisible()
+        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
-
+    func grabStoryboard() -> UIStoryboard{
+            
+            var storyboard = UIStoryboard()
+            let height = UIScreen.main.bounds.size.height
+            if height == 667 {
+                storyboard = UIStoryboard(name: "Main", bundle: nil)
+                //iPhone8
+            }else if height == 736 {
+                storyboard = UIStoryboard(name: "iPhone8plus", bundle: nil)
+                //iPhone8Plus
+            }else if height == 812{
+                storyboard = UIStoryboard(name: "iPhone11Pro", bundle: nil)
+            }else if height == 896{
+                storyboard = UIStoryboard(name: "iPhone11", bundle: nil)
+            }else if height == 1112{
+                
+                storyboard = UIStoryboard(name: "iPad", bundle: nil)
+            }else{
+                
+                switch UIDevice.current.model {
+                case "iPhone" :
+                storyboard = UIStoryboard(name: "se", bundle: nil)
+                    break
+                case "iPad" :
+                storyboard = UIStoryboard(name: "iPad", bundle: nil)
+                print("iPad")
+                    break
+                default:
+                    break
+                }
+            }
+            return storyboard
+    }
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
