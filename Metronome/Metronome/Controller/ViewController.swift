@@ -10,35 +10,72 @@ import UIKit
 
 class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSource{
     
-    @IBOutlet var pickerView: UIPickerView!
-    
+    @IBOutlet var BPMTextField: UITextField!
+    @IBOutlet var beatTextField: UITextField!
     @IBOutlet var BPMLabel: UILabel!
     
     @IBOutlet var PlayButton: UIButton!
+    @IBOutlet var SilentKeepButton: UIButton!
+    @IBOutlet var ConstantKeepButton: UIButton!
+    
+    var PlayOrStop: Bool = true
     
     var bpmArray:[Int] = ([Int])(60...660)
     
     let beatArray = ["4","8","12","16","24","32","48","64"]
     
+    var pickerView = UIPickerView()
+    
+    var timer:Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.selectRow(0, inComponent: 0, animated: false)
-        BPMLabel.text = String(bpmArray[pickerView.selectedRow(inComponent: 0)])
+        pickerView.selectRow(60, inComponent: 0, animated: false)
+        pickerView.accessibilityIdentifier = "picker"
+        pickerView.isAccessibilityElement = true
         
+        let toolbar = UIToolbar(frame:CGRect(x: 0, y: UIScreen.main.bounds.size.height, width:UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width / 4))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+        doneItem.accessibilityIdentifier = "done"
+        toolbar.setItems([doneItem], animated: true)
+        self.BPMTextField.inputView = pickerView
+        self.BPMTextField.inputAccessoryView = toolbar
+        
+        self.beatTextField.inputView = pickerView
+        self.beatTextField.inputAccessoryView = toolbar
+        
+        BPMTextField.text = "120"
+        beatTextField.text = "4"
+        BPMLabel.text = "120"
         // Do any additional setup after loading the view.
     }
 
     var audioPlayer = PlaySound()
     
     @IBAction func Button1(_ sender: Any) {
-        let bpm = calcBPM()
-        PlayButton.isEnabled = false
-        audioPlayer.metronome(BPM: bpm)
-        PlayButton.isEnabled = true
+        if PlayOrStop{
+            let bpm = calcBPM()
+            SilentKeepButton.isEnabled = false
+            ConstantKeepButton.isEnabled = false
+            PlayOrStop = !PlayOrStop
+            PlayButton.setTitle("停止", for: UIControl.State.normal)
+            timer = Timer.scheduledTimer(timeInterval: 60 / Double(bpm)! , target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
+        }
+        else{
+            timer.invalidate()
+            SilentKeepButton.isEnabled = true
+            ConstantKeepButton.isEnabled = true
+            PlayButton.setTitle("再生", for: UIControl.State.normal)
+            PlayOrStop = !PlayOrStop
+        }
+        
     }
-    
+    @objc func Action(){
+        audioPlayer.playSound()
+    }
 
     @IBAction func NextViewButton(_ sender: Any) {
         let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SirentKeep") as! NextViewController
@@ -80,11 +117,19 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
             return beatArray[row]
         }
     }
+    //列を選択した後の処理
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        BPMLabel.text! = calcBPM()
+        
     }
     func calcBPM()->String{
         audioPlayer.calcQuarterNotes(BPM: String(bpmArray[pickerView.selectedRow(inComponent: 0)]),Notes: beatArray[pickerView.selectedRow(inComponent: 1)])
+    }
+    @objc func done() {
+        BPMTextField.endEditing(true)
+        beatTextField.endEditing(true)
+        BPMTextField.text = String(bpmArray[pickerView.selectedRow(inComponent: 0)])
+        beatTextField.text = String(beatArray[pickerView.selectedRow(inComponent: 1)])
+        BPMLabel.text! = calcBPM()
     }
 }
 
