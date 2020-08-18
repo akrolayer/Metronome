@@ -52,23 +52,31 @@ class MetronomeUITests: XCTestCase {
         let silentkeepButton = app.buttons["silentKeepButton"]
         silentkeepButton.tap()
         
+        let startButton = app.buttons["startButton1"]
+        let stopButton = app.buttons["stopButton1"]
         //存在確認
-        XCTAssert(app.buttons["startButton1"].exists)
-        XCTAssertTrue(app.buttons["startButton1"].isEnabled)
-        XCTAssert(app.buttons["stopButton1"].exists)
-        XCTAssertFalse(app.buttons["stopButton1"].isEnabled)
+        XCTAssert(startButton.exists)
+        XCTAssertTrue(startButton.isEnabled)
+        XCTAssert(stopButton.exists)
+        XCTAssertFalse(stopButton.isEnabled)
         //Enable,Unableの切り替え
-        app.buttons["startButton1"].tap()
-        XCTAssertTrue(app.buttons["stopButton1"].isEnabled)
-        XCTAssertFalse(app.buttons["startButton1"].isEnabled)
-        app.buttons["stopButton1"].tap()
-        XCTAssertTrue(app.buttons["startButton1"].isEnabled)
-        XCTAssertFalse(app.buttons["stopButton1"].isEnabled)
+        startButton.tap()
+        XCTAssertTrue(stopButton.isEnabled)
+        XCTAssertFalse(startButton.isEnabled)
+        stopButton.tap()
+        XCTAssertTrue(startButton.isEnabled)
+        XCTAssertFalse(stopButton.isEnabled)
         //枠内に入っているか確認
         let window = app.windows.element(boundBy: 0)
         XCTAssert(window.frame.contains(app.buttons["startButton1"].frame))
         XCTAssert(window.frame.contains(app.buttons["stopButton1"].frame))
+        
+        startButton.tap()
+        sleep(6)
+        stopButton.tap()
+        XCTAssertEqual(app.staticTexts["resultLabel"].label, "0.4拍ずれたよ!")
     }
+
     func testNextViewController2() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()

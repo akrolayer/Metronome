@@ -55,18 +55,10 @@ class NextViewController: UIViewController {
         if(Count < judgeCount - 1){
             return;
         }
-        correctTiming = interval * DecimalJudgeCount
-        let elapsed = CFAbsoluteTimeGetCurrent() - startTiming
-        let elapsedString = String(elapsed)
-        let diff = Decimal(string:elapsedString)! - correctTiming
-        
-        let diffPerBeat = diff / interval
-        let NSDecimaldiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
-        let doubleDiffPerBeat = Double(truncating: NSDecimaldiffPerBeat)
-        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat*1000) / 1000
+        let roundDoubleDiffPerBeat = CalcRoundDoubleDiffPerBeat()
         resultLabel.text = "\(roundDoubleDiffPerBeat)拍ずれたよ！"
         
-        let items = ["\(bpm)で\(judgeCount)回、\(roundDoubleDiffPerBeat)拍ずれたよ！"]
+        let items = ["\(bpm)で\(judgeCount)回、\(resultLabel.text)"]
         let actibityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(actibityVC,animated: true,completion: nil)
     }
@@ -82,7 +74,8 @@ class NextViewController: UIViewController {
         }
         Count += 1
     }
-    func CalcRoundDoubleDiffPerBeat(){
+    func CalcRoundDoubleDiffPerBeat() -> Double{
+        correctTiming = interval * DecimalJudgeCount
         let elapsed = CFAbsoluteTimeGetCurrent() - startTiming
         let elapsedString = String(elapsed)
         let diff = Decimal(string:elapsedString)! - correctTiming
@@ -90,6 +83,7 @@ class NextViewController: UIViewController {
         let diffPerBeat = diff / interval
         let NSDecimaldiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
         let doubleDiffPerBeat = Double(truncating: NSDecimaldiffPerBeat)
-        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat*1000) / 1000
+        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat * 10) / 10
+        return roundDoubleDiffPerBeat
     }
 }
