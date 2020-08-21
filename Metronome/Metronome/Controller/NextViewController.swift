@@ -44,7 +44,6 @@ class NextViewController: UIViewController {
         startButton.isEnabled = false
         stopButton.isEnabled = true
         startTimer()
-        startTiming = CFAbsoluteTimeGetCurrent()
     }
     
     @IBAction func stop(_ sender: Any) {
@@ -58,7 +57,7 @@ class NextViewController: UIViewController {
         let roundDoubleDiffPerBeat = CalcRoundDoubleDiffPerBeat()
         resultLabel.text = "\(roundDoubleDiffPerBeat)拍ずれたよ！"
         
-        let items = ["\(bpm)で\(judgeCount)回、\(resultLabel.text)"]
+        let items = ["\(bpm)で\(judgeCount)回、\(resultLabel.text!)"]
         let actibityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(actibityVC,animated: true,completion: nil)
     }
@@ -66,10 +65,11 @@ class NextViewController: UIViewController {
         Count = 0
         let NSDecimalInterval = NSDecimalNumber(decimal: interval)
         let DoubleInterval = Double(truncating: NSDecimalInterval)
+        startTiming = CFAbsoluteTimeGetCurrent()
         timer = Timer.scheduledTimer(timeInterval: DoubleInterval , target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
     }
     @objc func Action(){
-        if(Count < playcount){
+        if Count < playcount{
             audioPlayer.playSound()
         }
         Count += 1
@@ -78,7 +78,9 @@ class NextViewController: UIViewController {
         correctTiming = interval * DecimalJudgeCount
         let elapsed = CFAbsoluteTimeGetCurrent() - startTiming
         let elapsedString = String(elapsed)
-        let diff = Decimal(string:elapsedString)! - correctTiming
+        var diff = Decimal(string:elapsedString)! - correctTiming
+        let errorNumber:Decimal = 0.2
+        diff -= errorNumber
         
         let diffPerBeat = diff / interval
         let NSDecimaldiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)

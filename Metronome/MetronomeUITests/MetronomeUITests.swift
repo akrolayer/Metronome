@@ -24,23 +24,23 @@ class MetronomeUITests: XCTestCase {
     }
 
     func testViewController() throws {
-        //pickerを二つ並べ、それを下から出しているがそのテスト方法がわかっていない
-        let app = XCUIApplication()
-        let bpmTextField = app.textFields["bpmTextBox"]
-        bpmTextField.tap()
-
-        //XCUIApplication().pickerWheels["picker"].adjust(toPickerWheelValue: "130")
-
-        let firstPredicate = NSPredicate(format: "label BEGINSWITH 'PickerWheel'")
-        let firstPicker = app.pickerWheels.element(matching: firstPredicate)
-        firstPicker.adjust(toPickerWheelValue: "123")
-        let secondPredicate = NSPredicate(format: "label BEGINSWITH 'PickerWheel")
-        let secondPicker = app.pickerWheels.element(matching: secondPredicate)
-        secondPicker.adjust(toPickerWheelValue: "16")
-
-        app.buttons["done"].tap()
-
-        XCTAssertEqual(app.staticTexts["changedBPMLabel"].label, "130")
+//        //pickerを二つ並べ、それを下から出しているがそのテスト方法がわかっていない
+//        let app = XCUIApplication()
+//        let bpmTextField = app.textFields["bpmTextBox"]
+//        bpmTextField.tap()
+//        
+//        //XCUIApplication().pickerWheels["picker"].adjust(toPickerWheelValue: "130")
+//
+//        let firstPredicate = NSPredicate(format: "label BEGINSWITH 'PickerWheel'")
+//        let firstPicker = app.pickerWheels.element(matching: firstPredicate)
+//        firstPicker.adjust(toPickerWheelValue: "123")
+//        let secondPredicate = NSPredicate(format: "label BEGINSWITH 'PickerWheel")
+//        let secondPicker = app.pickerWheels.element(matching: secondPredicate)
+//        secondPicker.adjust(toPickerWheelValue: "16")
+//
+//        app.buttons["done"].tap()
+//
+//        XCTAssertEqual(app.staticTexts["changedBPMLabel"].label, "130")
     }
     func testNextViewController() throws {
         // UI tests must launch the application that they test.
@@ -48,6 +48,9 @@ class MetronomeUITests: XCTestCase {
         app.launch()
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+        //let bpmTextField = app.textFields["bpmTextBox"]
+        //bpmTextField.tap()
 
         let silentkeepButton = app.buttons["silentKeepButton"]
         silentkeepButton.tap()
@@ -68,13 +71,13 @@ class MetronomeUITests: XCTestCase {
         XCTAssertFalse(stopButton.isEnabled)
         //枠内に入っているか確認
         let window = app.windows.element(boundBy: 0)
-        XCTAssert(window.frame.contains(app.buttons["startButton1"].frame))
-        XCTAssert(window.frame.contains(app.buttons["stopButton1"].frame))
+        XCTAssert(window.frame.contains(startButton.frame))
+        XCTAssert(window.frame.contains(stopButton.frame))
         
         startButton.tap()
         sleep(6)
         stopButton.tap()
-        XCTAssertEqual(app.staticTexts["resultLabel"].label, "0.4拍ずれたよ!")
+        XCTAssertEqual(app.staticTexts["resultLabel"].label, "0.0拍ずれたよ！")
     }
 
     func testNextViewController2() throws {
@@ -84,22 +87,30 @@ class MetronomeUITests: XCTestCase {
         
         let constantKeepButton = app.buttons["constantKeepButton"]
         constantKeepButton.tap()
-        //存在確認
-        XCTAssert(app.buttons["startButton2"].exists)
-        XCTAssertTrue(app.buttons["startButton2"].isEnabled)
-        XCTAssert(app.buttons["stopButton2"].exists)
-        XCTAssertFalse(app.buttons["stopButton2"].isEnabled)
         
-        //
-        let image = app.buttons["startButton2"].images
-        app.buttons["startButton2"].tap()
-        XCTAssertTrue(app.buttons["stopButton2"].isEnabled)
-        XCTAssertFalse(app.buttons["startButton2"].images == image)
-
+        let startButton = app.buttons["startButton2"]
+        let stopButton = app.buttons["stopButton2"]
+        //存在確認
+        XCTAssert(startButton.exists)
+        XCTAssertTrue(startButton.isEnabled)
+        XCTAssert(stopButton.exists)
+        XCTAssertFalse(stopButton.isEnabled)
         //枠内に入っているか確認
         let window = app.windows.element(boundBy: 0)
         XCTAssert(window.frame.contains(app.buttons["startButton2"].frame))
+        
+        //画像が変わっているか確認
+        let image = startButton.images
+        startButton.tap()
+        XCTAssertTrue(app.buttons["stopButton2"].isEnabled)
+        XCTAssertFalse(app.buttons["startButton2"].images == image)
         XCTAssert(window.frame.contains(app.buttons["stopButton2"].frame))
+        
+        for i in 0...11{
+        startButton.tap()
+        sleep(1)
+        }
+        
     }
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

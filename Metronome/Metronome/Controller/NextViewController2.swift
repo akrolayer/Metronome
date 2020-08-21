@@ -47,7 +47,6 @@ class NextViewController2: UIViewController {
         if tapCount == 0{
             stopButton.isEnabled = true
             startTimer()
-            startTiming = CFAbsoluteTimeGetCurrent()
             let image = UIImage(systemName: "music.note")
             startButton.setImage(image, for: UIControl.State.normal)
             startButton.imageView?.contentMode = .scaleAspectFit
@@ -85,6 +84,7 @@ class NextViewController2: UIViewController {
     }
     func startTimer(){
         ringCount = 0
+        startTiming = CFAbsoluteTimeGetCurrent()
         let NSDecimalInterval = NSDecimalNumber(decimal: interval)
         let DoubleInterval = Double(truncating: NSDecimalInterval)
         timer = Timer.scheduledTimer(timeInterval: DoubleInterval , target: self, selector: #selector(self.Action), userInfo: nil, repeats: true)
@@ -102,16 +102,18 @@ class NextViewController2: UIViewController {
         }
     }
     func GetRoundDiffperBeat(startTiming: CFAbsoluteTime)->Double{
-        let TapTiming = CFAbsoluteTimeGetCurrent() - startTiming
+        var TapTiming = CFAbsoluteTimeGetCurrent() - startTiming
         print("TapTiming=\(TapTiming)")
         let NSDecimalInterval = NSDecimalNumber(decimal: interval)
+        let errorNumber = 0.2
+        TapTiming -= errorNumber
         let doubleInterval = Double(truncating: NSDecimalInterval)
-        let roundDoubleInterval = round(doubleInterval * 1000) / 1000
+        let roundDoubleInterval = round(doubleInterval * 10) / 10
         print("doubleInterval=\(doubleInterval)")
-        let diff = round(TapTiming * 1000) / 1000 - roundDoubleInterval * Double(tapCount)
+        let diff = round(TapTiming * 10) / 10 - roundDoubleInterval * Double(tapCount)
         let diffPerBeat = diff / roundDoubleInterval
 
-        let roundDiffPerBeat = round(diffPerBeat*1000) / 1000
+        let roundDiffPerBeat = round(diffPerBeat*10) / 10
         return roundDiffPerBeat
     }
 }

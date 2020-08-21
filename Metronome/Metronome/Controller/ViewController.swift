@@ -33,7 +33,8 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.selectRow(60, inComponent: 0, animated: false)
+        //pickerView.selectRow(60, inComponent: 0, animated: false)
+        pickerView.selectRow(0, inComponent: 0, animated: false)
         pickerView.accessibilityIdentifier = "picker"
         pickerView.isAccessibilityElement = true
         
@@ -47,9 +48,11 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         self.beatTextField.inputView = pickerView
         self.beatTextField.inputAccessoryView = toolbar
         
-        BPMTextField.text = "120"
+        //BPMTextField.text = "120"
+        //beatTextField.text = "4"
+        BPMTextField.text = "60"
         beatTextField.text = "4"
-        BPMLabel.text = "120"
+        BPMLabel.text = BPMTextField.text
         // Do any additional setup after loading the view.
     }
 
