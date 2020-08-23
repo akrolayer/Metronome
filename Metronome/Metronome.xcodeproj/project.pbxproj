@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E134857624E67E9B00E266B0 /* iPhone11Pro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E134857524E67E9B00E266B0 /* iPhone11Pro.storyboard */; };
 		E134857824E6803000E266B0 /* iPhone11.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E134857724E6803000E266B0 /* iPhone11.storyboard */; };
+		E134857A24F295C600E266B0 /* CalcBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134857924F295C600E266B0 /* CalcBeat.swift */; };
 		E1874DE124C344BC00B1D9C7 /* NextViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */; };
 		E1874DE324C6C3A200B1D9C7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */; };
 		E1874DEB24D3240100B1D9C7 /* MetronomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DEA24D3240100B1D9C7 /* MetronomeUITests.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		E134857524E67E9B00E266B0 /* iPhone11Pro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone11Pro.storyboard; sourceTree = "<group>"; };
 		E134857724E6803000E266B0 /* iPhone11.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone11.storyboard; sourceTree = "<group>"; };
+		E134857924F295C600E266B0 /* CalcBeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcBeat.swift; sourceTree = "<group>"; };
 		E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController2.swift; sourceTree = "<group>"; };
 		E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E1874DE824D3240100B1D9C7 /* MetronomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */,
+				E134857924F295C600E266B0 /* CalcBeat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E134857A24F295C600E266B0 /* CalcBeat.swift in Sources */,
 				E1B9ECA224B4B72E00CE5EAE /* NextViewController.swift in Sources */,
 				E1B9EC8C24B0646200CE5EAE /* ViewController.swift in Sources */,
 				E1874DE324C6C3A200B1D9C7 /* ResultViewController.swift in Sources */,
