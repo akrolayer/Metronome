@@ -51,8 +51,9 @@ class NextViewController2: UIViewController {
             let image = UIImage(systemName: "music.note")
             startButton.setImage(image, for: UIControl.State.normal)
             startButton.imageView?.contentMode = .scaleAspectFit
+            tapCount += 1
+            return;
         }
-
         //let roundDiffPerBeat = GetRoundDiffperBeat(startTiming: startTiming)
         let roundDiffPerBeat = calcBeat.GetRoundDiffperBeat(startTiming: startTiming, interval: interval, tapCount: tapCount)
         resultList.append(roundDiffPerBeat)
