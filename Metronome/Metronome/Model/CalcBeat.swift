@@ -10,35 +10,29 @@ import Foundation
 
 class CalcBeat{
     
-    func CalcRoundDoubleDiffPerBeat(interval: Decimal,judgeCount: Int, startTiming: CFAbsoluteTime) -> Double{
+
+    func GetRoundDoubleDiffPerBeat(interval: Decimal,judgeCount: Int, elapsedString: String) -> Double{
         let DecimalJudgeCount = Decimal(judgeCount)
-        let correctTiming = interval * DecimalJudgeCount
-        let elapsed = CFAbsoluteTimeGetCurrent() - startTiming
-        let elapsedString = String(elapsed)
-        var diff = Decimal(string:elapsedString)! - correctTiming
-        let errorNumber:Decimal = 0.2
-        diff -= errorNumber
+        let correctTiming = interval * DecimalJudgeCount//正しいタップ時間
         
-        let diffPerBeat = diff / interval
-        let NSDecimaldiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
-        let doubleDiffPerBeat = Double(truncating: NSDecimaldiffPerBeat)
+        let diff = Decimal(string:elapsedString)! - correctTiming
+        let diffPerBeat = diff / interval   //1拍ごとのズレに変換
+        
+        let NSDecimalDiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
+        let doubleDiffPerBeat = Double(truncating: NSDecimalDiffPerBeat)
         let roundDoubleDiffPerBeat = round(doubleDiffPerBeat * 10) / 10
         return roundDoubleDiffPerBeat
     }
     
-    func GetRoundDiffperBeat(startTiming: CFAbsoluteTime,interval: Decimal, tapCount: Int)->Double{
-        var TapTiming = CFAbsoluteTimeGetCurrent() - startTiming
-        print("TapTiming=\(TapTiming)")
-        let NSDecimalInterval = NSDecimalNumber(decimal: interval)
-        let errorNumber = 0.2
-        TapTiming -= errorNumber
-        let doubleInterval = Double(truncating: NSDecimalInterval)
-        let roundDoubleInterval = round(doubleInterval * 10) / 10
-        print("doubleInterval=\(doubleInterval)")
-        let diff = round(TapTiming * 10) / 10 - roundDoubleInterval * Double(tapCount)
-        let diffPerBeat = diff / roundDoubleInterval
-
-        let roundDiffPerBeat = round(diffPerBeat*10) / 10
-        return roundDiffPerBeat
+    func GetEachRoundDiffperBeat(TapTimingString: String,interval: Decimal, tapCount: Int)->Double{
+        
+        let diff = Decimal(string:TapTimingString)! - interval * Decimal(tapCount)
+        let diffPerBeat = diff / interval
+        
+        let NSDecimalDiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
+        let doubleDiffPerBeat = Double(truncating: NSDecimalDiffPerBeat)
+        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat * 10) / 10
+        
+        return roundDoubleDiffPerBeat
     }
 }

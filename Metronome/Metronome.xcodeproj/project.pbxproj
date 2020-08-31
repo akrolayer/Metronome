@@ -13,6 +13,11 @@
 		E1874DE124C344BC00B1D9C7 /* NextViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE024C344BC00B1D9C7 /* NextViewController2.swift */; };
 		E1874DE324C6C3A200B1D9C7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DE224C6C3A200B1D9C7 /* ResultViewController.swift */; };
 		E1874DEB24D3240100B1D9C7 /* MetronomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1874DEA24D3240100B1D9C7 /* MetronomeUITests.swift */; };
+		E1B9874F24FC942A00645F7F /* MetronomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9874E24FC942A00645F7F /* MetronomeTests.swift */; };
+		E1B9875624FC947F00645F7F /* CalcBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134857924F295C600E266B0 /* CalcBeat.swift */; };
+		E1B9875724FC948000645F7F /* CalcBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134857924F295C600E266B0 /* CalcBeat.swift */; };
+		E1B9875824FC948500645F7F /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */; };
+		E1B9875924FC948600645F7F /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC9B24B064E700CE5EAE /* PlaySound.swift */; };
 		E1B9EC8824B0646200CE5EAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC8724B0646200CE5EAE /* AppDelegate.swift */; };
 		E1B9EC8A24B0646200CE5EAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC8924B0646200CE5EAE /* SceneDelegate.swift */; };
 		E1B9EC8C24B0646200CE5EAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9EC8B24B0646200CE5EAE /* ViewController.swift */; };
@@ -32,6 +37,13 @@
 			remoteGlobalIDString = E1B9EC8324B0646200CE5EAE;
 			remoteInfo = Metronome;
 		};
+		E1B9875124FC942A00645F7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1B9EC7C24B0646200CE5EAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1B9EC8324B0646200CE5EAE;
+			remoteInfo = Metronome;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +55,9 @@
 		E1874DE824D3240100B1D9C7 /* MetronomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1874DEA24D3240100B1D9C7 /* MetronomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeUITests.swift; sourceTree = "<group>"; };
 		E1874DEC24D3240100B1D9C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1B9874C24FC942900645F7F /* MetronomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1B9874E24FC942A00645F7F /* MetronomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeTests.swift; sourceTree = "<group>"; };
+		E1B9875024FC942A00645F7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1B9EC8424B0646200CE5EAE /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B9EC8724B0646200CE5EAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B9EC8924B0646200CE5EAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +73,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		E1874DE524D3240100B1D9C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1B9874924FC942900645F7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,11 +137,21 @@
 			path = MetronomeUITests;
 			sourceTree = "<group>";
 		};
+		E1B9874D24FC942A00645F7F /* MetronomeTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1B9874E24FC942A00645F7F /* MetronomeTests.swift */,
+				E1B9875024FC942A00645F7F /* Info.plist */,
+			);
+			path = MetronomeTests;
+			sourceTree = "<group>";
+		};
 		E1B9EC7B24B0646200CE5EAE = {
 			isa = PBXGroup;
 			children = (
 				E1B9EC8624B0646200CE5EAE /* Metronome */,
 				E1874DE924D3240100B1D9C7 /* MetronomeUITests */,
+				E1B9874D24FC942A00645F7F /* MetronomeTests */,
 				E1B9EC8524B0646200CE5EAE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +161,7 @@
 			children = (
 				E1B9EC8424B0646200CE5EAE /* Metronome.app */,
 				E1874DE824D3240100B1D9C7 /* MetronomeUITests.xctest */,
+				E1B9874C24FC942900645F7F /* MetronomeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,6 +201,24 @@
 			productReference = E1874DE824D3240100B1D9C7 /* MetronomeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		E1B9874B24FC942900645F7F /* MetronomeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1B9875524FC942A00645F7F /* Build configuration list for PBXNativeTarget "MetronomeTests" */;
+			buildPhases = (
+				E1B9874824FC942900645F7F /* Sources */,
+				E1B9874924FC942900645F7F /* Frameworks */,
+				E1B9874A24FC942900645F7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1B9875224FC942A00645F7F /* PBXTargetDependency */,
+			);
+			name = MetronomeTests;
+			productName = MetronomeTests;
+			productReference = E1B9874C24FC942900645F7F /* MetronomeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E1B9EC8324B0646200CE5EAE /* Metronome */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1B9EC9824B0646800CE5EAE /* Build configuration list for PBXNativeTarget "Metronome" */;
@@ -199,6 +250,10 @@
 						CreatedOnToolsVersion = 11.4.1;
 						TestTargetID = E1B9EC8324B0646200CE5EAE;
 					};
+					E1B9874B24FC942900645F7F = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = E1B9EC8324B0646200CE5EAE;
+					};
 					E1B9EC8324B0646200CE5EAE = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -219,12 +274,20 @@
 			targets = (
 				E1B9EC8324B0646200CE5EAE /* Metronome */,
 				E1874DE724D3240100B1D9C7 /* MetronomeUITests */,
+				E1B9874B24FC942900645F7F /* MetronomeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E1874DE624D3240100B1D9C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1B9874A24FC942900645F7F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,7 +314,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B9875624FC947F00645F7F /* CalcBeat.swift in Sources */,
+				E1B9875824FC948500645F7F /* PlaySound.swift in Sources */,
 				E1874DEB24D3240100B1D9C7 /* MetronomeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1B9874824FC942900645F7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1B9875724FC948000645F7F /* CalcBeat.swift in Sources */,
+				E1B9875924FC948600645F7F /* PlaySound.swift in Sources */,
+				E1B9874F24FC942A00645F7F /* MetronomeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +352,11 @@
 			isa = PBXTargetDependency;
 			target = E1B9EC8324B0646200CE5EAE /* Metronome */;
 			targetProxy = E1874DED24D3240100B1D9C7 /* PBXContainerItemProxy */;
+		};
+		E1B9875224FC942A00645F7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1B9EC8324B0646200CE5EAE /* Metronome */;
+			targetProxy = E1B9875124FC942A00645F7F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -304,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4A9VT2952;
 				INFOPLIST_FILE = MetronomeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -322,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4A9VT2952;
 				INFOPLIST_FILE = MetronomeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -333,6 +415,46 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Metronome;
+			};
+			name = Release;
+		};
+		E1B9875324FC942A00645F7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4A9VT2952;
+				INFOPLIST_FILE = MetronomeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.akrolayer.MetronomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metronome.app/Metronome";
+			};
+			name = Debug;
+		};
+		E1B9875424FC942A00645F7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y4A9VT2952;
+				INFOPLIST_FILE = MetronomeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.akrolayer.MetronomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metronome.app/Metronome";
 			};
 			name = Release;
 		};
@@ -494,6 +616,15 @@
 			buildConfigurations = (
 				E1874DEF24D3240100B1D9C7 /* Debug */,
 				E1874DF024D3240100B1D9C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1B9875524FC942A00645F7F /* Build configuration list for PBXNativeTarget "MetronomeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1B9875324FC942A00645F7F /* Debug */,
+				E1B9875424FC942A00645F7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

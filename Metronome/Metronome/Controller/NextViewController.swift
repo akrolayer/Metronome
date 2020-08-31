@@ -56,7 +56,11 @@ class NextViewController: UIViewController {
         if(Count < judgeCount - 1){
             return;
         }
-        let roundDoubleDiffPerBeat = calcBeat.CalcRoundDoubleDiffPerBeat(interval: interval, judgeCount: judgeCount, startTiming: startTiming)
+        var elapsed = CFAbsoluteTimeGetCurrent() - startTiming//１回目にタップしてからタップするまでの時間
+        let errorNumber = 0.3//誤差
+        elapsed -= errorNumber
+        let elapsedString = String(elapsed)
+        let roundDoubleDiffPerBeat = calcBeat.GetRoundDoubleDiffPerBeat(interval: interval, judgeCount: judgeCount, elapsedString: elapsedString)
         resultLabel.text = "\(roundDoubleDiffPerBeat)拍ずれたよ！"
         
         let items = ["bpm\(bpm)で\(judgeCount)回、\(resultLabel.text!)"]

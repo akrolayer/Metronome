@@ -48,14 +48,18 @@ class NextViewController2: UIViewController {
         if tapCount == 0{
             stopButton.isEnabled = true
             startTimer()
-            let image = UIImage(systemName: "music.note")
-            startButton.setImage(image, for: UIControl.State.normal)
-            startButton.imageView?.contentMode = .scaleAspectFit
+//            let image = UIImage(systemName: "music.note")
+//            startButton.setImage(image, for: UIControl.State.normal)
+//            startButton.imageView?.contentMode = .scaleAspectFit
             tapCount += 1
             return;
         }
         //let roundDiffPerBeat = GetRoundDiffperBeat(startTiming: startTiming)
-        let roundDiffPerBeat = calcBeat.GetRoundDiffperBeat(startTiming: startTiming, interval: interval, tapCount: tapCount)
+        var TapTiming = CFAbsoluteTimeGetCurrent() - startTiming
+        let errorNumber = 0.3 //誤差
+        TapTiming -= errorNumber
+        let TapTimingString = String(TapTiming)
+        let roundDiffPerBeat = calcBeat.GetEachRoundDiffperBeat(TapTimingString: TapTimingString, interval: interval, tapCount: tapCount)
         resultList.append(roundDiffPerBeat)
         
         if(tapCount == judgeCount){
