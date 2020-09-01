@@ -75,7 +75,7 @@ class MetronomeUITests: XCTestCase {
         XCTAssert(window.frame.contains(stopButton.frame))
         
         startButton.tap()
-        sleep(6)
+        sleep(12)
         stopButton.tap()
         XCTAssertEqual(app.staticTexts["resultLabel"].label, "0.0拍ずれたよ！")
     }
@@ -106,11 +106,11 @@ class MetronomeUITests: XCTestCase {
         XCTAssertFalse(app.buttons["startButton2"].images == image)
         XCTAssert(window.frame.contains(app.buttons["stopButton2"].frame))
         
-        for i in 0...11{
+        for _ in 0...11{
         startButton.tap()
         sleep(1)
         }
-        
+        XCTAssertEqual(app.staticTexts["textView"].label, "0.0拍ずれたよ！")
     }
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

@@ -29,8 +29,8 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func shareButton(_ sender: Any) {
-        let items = ["\(bpm)で\(list.count)回、最終的に\(list[list.endIndex])拍ずれたよ！"]
-        let actibityVC = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
+        let items = ["\(bpm)で\(list.count)回、最終的に\(list[list.count - 1])拍ずれたよ！"]
+        let actibityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(actibityVC,animated: true,completion: nil)
     }
     

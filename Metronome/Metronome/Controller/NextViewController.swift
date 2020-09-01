@@ -24,20 +24,22 @@ class NextViewController: UIViewController {
     let sixty:Decimal = 60
     var playcount = 4
     let judgeCount:Int = 12
-    let DecimalJudgeCount:Decimal = 12
-    var audioPlayer = PlaySound()
+
     var pushTiming = 0.0
     var correctTiming:Decimal = 0.0
     var startTiming:CFAbsoluteTime = 0.0
+    
+    var audioPlayer = PlaySound()
+    let calcBeat = CalcBeat()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stopButton.isEnabled = false
         //label.text = bpm
         interval = sixty / Decimal.init(string: bpm)!
-        descLabel.text = "\(judgeCount)回鳴ったタイミングでボタンを押してください。最初の4回は再生されます"
+        descLabel.text = "\(judgeCount)回鳴ったタイミングで右のボタンを押してください。最初の4回は再生されます"
         resultLabel.text = "";
-        print("interval = \(interval)")
+
     }
 
     @IBAction func start(_ sender: Any) {
@@ -54,13 +56,22 @@ class NextViewController: UIViewController {
         if(Count < judgeCount - 1){
             return;
         }
-        let roundDoubleDiffPerBeat = CalcRoundDoubleDiffPerBeat()
+        var elapsed = CFAbsoluteTimeGetCurrent() - startTiming//１回目にタップしてからタップするまでの時間
+        let errorNumber = 0.3//誤差
+        elapsed -= errorNumber
+        let elapsedString = String(elapsed)
+        let roundDoubleDiffPerBeat = calcBeat.GetRoundDoubleDiffPerBeat(interval: interval, judgeCount: judgeCount, elapsedString: elapsedString)
         resultLabel.text = "\(roundDoubleDiffPerBeat)拍ずれたよ！"
         
-        let items = ["\(bpm)で\(judgeCount)回、\(resultLabel.text!)"]
+        let items = ["bpm\(bpm)で\(judgeCount)回、\(resultLabel.text!)"]
         let actibityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(actibityVC,animated: true,completion: nil)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+           if stopButton.isEnabled == true{
+               stop(stopButton as Any)
+           }
+       }
     func startTimer(){
         Count = 0
         let NSDecimalInterval = NSDecimalNumber(decimal: interval)
@@ -73,19 +84,5 @@ class NextViewController: UIViewController {
             audioPlayer.playSound()
         }
         Count += 1
-    }
-    func CalcRoundDoubleDiffPerBeat() -> Double{
-        correctTiming = interval * DecimalJudgeCount
-        let elapsed = CFAbsoluteTimeGetCurrent() - startTiming
-        let elapsedString = String(elapsed)
-        var diff = Decimal(string:elapsedString)! - correctTiming
-        let errorNumber:Decimal = 0.2
-        diff -= errorNumber
-        
-        let diffPerBeat = diff / interval
-        let NSDecimaldiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
-        let doubleDiffPerBeat = Double(truncating: NSDecimaldiffPerBeat)
-        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat * 10) / 10
-        return roundDoubleDiffPerBeat
     }
 }
