@@ -35,8 +35,6 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         pickerView.delegate = self
         pickerView.dataSource = self
         //pickerView.selectRow(60, inComponent: 0, animated: false)
-        var a = Int(bpmString)! - 60
-        var b = Int(beatString)! / 4 - 1
         pickerView.selectRow(Int(bpmString)! - 60, inComponent: 0, animated: false)
         pickerView.selectRow(Int(beatString)! / 4 - 1, inComponent: 1, animated: false)
         pickerView.accessibilityIdentifier = "picker"

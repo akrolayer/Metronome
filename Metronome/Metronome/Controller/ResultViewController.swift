@@ -11,7 +11,7 @@ import UIKit
 class ResultViewController: UIViewController {
     
     @IBOutlet var resultLabel: UILabel!
-    var list:[Double]  = []
+    var list:[NSDecimalNumber]  = []
     var playCount = 1
     var bpm:String = ""
 

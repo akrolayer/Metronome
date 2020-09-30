@@ -9,9 +9,15 @@
 import Foundation
 
 class CalcBeat{
-    
+    let behaviors:NSDecimalNumberHandler = NSDecimalNumberHandler(
+        roundingMode: NSDecimalNumber.RoundingMode.bankers,
+    scale: 1,
+    raiseOnExactness: false,
+    raiseOnOverflow: false,
+    raiseOnUnderflow: false,
+    raiseOnDivideByZero: false)
 
-    func GetRoundDoubleDiffPerBeat(interval: Decimal,judgeCount: Int, elapsedString: String) -> Double{
+    func GetRoundDoubleDiffPerBeat(interval: Decimal,judgeCount: Int, elapsedString: String) -> NSDecimalNumber{
         let DecimalJudgeCount = Decimal(judgeCount)
         let correctTiming = interval * DecimalJudgeCount//正しいタップ時間
         
@@ -19,20 +25,18 @@ class CalcBeat{
         let diffPerBeat = diff / interval   //1拍ごとのズレに変換
         
         let NSDecimalDiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
-        let doubleDiffPerBeat = Double(truncating: NSDecimalDiffPerBeat)
-        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat * 10) / 10
-        return roundDoubleDiffPerBeat
+        let RoundDiffPerBeat = NSDecimalDiffPerBeat.rounding(accordingToBehavior: behaviors)
+        return RoundDiffPerBeat
     }
     
-    func GetEachRoundDiffperBeat(TapTimingString: String,interval: Decimal, tapCount: Int)->Double{
+    func GetEachRoundDiffperBeat(TapTimingString: String,interval: Decimal, tapCount: Int)->NSDecimalNumber{
         
         let diff = Decimal(string:TapTimingString)! - interval * Decimal(tapCount)
         let diffPerBeat = diff / interval
         
         let NSDecimalDiffPerBeat = NSDecimalNumber(decimal: diffPerBeat)
-        let doubleDiffPerBeat = Double(truncating: NSDecimalDiffPerBeat)
-        let roundDoubleDiffPerBeat = round(doubleDiffPerBeat * 10) / 10
-        
-        return roundDoubleDiffPerBeat
+        let RoundDiffPerBeat = NSDecimalDiffPerBeat.rounding(accordingToBehavior: behaviors)
+        return RoundDiffPerBeat
+        //return roundDoubleDiffPerBeat
     }
 }

@@ -27,7 +27,7 @@ class NextViewController2: UIViewController {
     var correctTiming:Decimal = 0.0
     var startTiming:CFAbsoluteTime = 0.0
     var tapCount: Int = 0
-    var resultList:[Double] = []
+    var resultList:[NSDecimalNumber] = []
     
     var timer:Timer!
     let audioPlayer = PlaySound()
@@ -56,7 +56,7 @@ class NextViewController2: UIViewController {
         }
         //let roundDiffPerBeat = GetRoundDiffperBeat(startTiming: startTiming)
         var TapTiming = CFAbsoluteTimeGetCurrent() - startTiming
-        let errorNumber = 0.3 //誤差
+        let errorNumber = 0.2 //誤差
         TapTiming -= errorNumber
         let TapTimingString = String(TapTiming)
         let roundDiffPerBeat = calcBeat.GetEachRoundDiffperBeat(TapTimingString: TapTimingString, interval: interval, tapCount: tapCount)

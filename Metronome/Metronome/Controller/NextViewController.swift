@@ -57,11 +57,11 @@ class NextViewController: UIViewController {
             return;
         }
         var elapsed = CFAbsoluteTimeGetCurrent() - startTiming//１回目にタップしてからタップするまでの時間
-        let errorNumber = 0.3//誤差
+        let errorNumber = 0.2//誤差
         elapsed -= errorNumber
         let elapsedString = String(elapsed)
-        let roundDoubleDiffPerBeat = calcBeat.GetRoundDoubleDiffPerBeat(interval: interval, judgeCount: judgeCount, elapsedString: elapsedString)
-        resultLabel.text = "\(roundDoubleDiffPerBeat)拍ずれたよ！"
+        let roundDiffPerBeat = calcBeat.GetRoundDoubleDiffPerBeat(interval: interval, judgeCount: judgeCount, elapsedString: elapsedString)
+        resultLabel.text = "\(roundDiffPerBeat)拍ずれたよ！"
         
         let items = ["bpm\(bpm)で\(judgeCount)回、\(resultLabel.text!)"]
         let actibityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
