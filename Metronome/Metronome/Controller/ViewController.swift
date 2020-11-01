@@ -28,6 +28,7 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     
     var timer:Timer!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let bpmString = String(UserDefaults.standard.string(forKey: "BPM") ?? "60")
