@@ -50,7 +50,12 @@ class NextViewController: UIViewController {
             if let document = document, document.exists {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                 print("Document data: \(dataDescription)")
-                self.bestScore = String(dataDescription.hashValue)
+                //var scoreDic: [String: Double] = dataDescription
+                let from = dataDescription.index(dataDescription.startIndex, offsetBy:10)
+                let to = dataDescription.index(dataDescription.startIndex, offsetBy:11)
+                let newString = String(dataDescription[from..<to])
+                print(newString)
+                self.bestScore = newString
                 self.scoreLabel.text! = "ベストスコア：\(self.bestScore)"
             } else {
                 print("Document does not exist")
@@ -96,6 +101,7 @@ class NextViewController: UIViewController {
                     print("Document successfully written!")
                 }
             }
+            self.scoreLabel.text = "ベストスコア：\(self.bestScore)"
         }
         
         

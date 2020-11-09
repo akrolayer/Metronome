@@ -50,7 +50,7 @@ class MetronomeUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
         //let bpmTextField = app.textFields["bpmTextBox"]
-        //bpmTextField.tap()
+        //bpmTextField.doubleTap()
 
         let silentkeepButton = app.buttons["silentKeepButton"]
         silentkeepButton.tap()
