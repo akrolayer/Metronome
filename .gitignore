@@ -37,4 +37,4 @@ DerivedData/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode
-Metronome/GoogleService-Info.plist
+Metronome/Metronome/GoogleService-Info.plist
