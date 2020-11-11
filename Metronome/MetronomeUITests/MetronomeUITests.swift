@@ -50,7 +50,7 @@ class MetronomeUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
         //let bpmTextField = app.textFields["bpmTextBox"]
-        //bpmTextField.tap()
+        //bpmTextField.doubleTap()
 
         let silentkeepButton = app.buttons["silentKeepButton"]
         silentkeepButton.tap()
@@ -77,7 +77,7 @@ class MetronomeUITests: XCTestCase {
         startButton.tap()
         sleep(12)
         stopButton.tap()
-        XCTAssertEqual(app.staticTexts["resultLabel"].label, "0.0拍ずれたよ！")
+        XCTAssertEqual(app.staticTexts["resultLabel"].label, "0拍ずれたよ！")
     }
 
     func testNextViewController2() throws {
@@ -110,7 +110,7 @@ class MetronomeUITests: XCTestCase {
         startButton.tap()
         sleep(1)
         }
-        XCTAssertEqual(app.staticTexts["textView"].label, "0.0拍ずれたよ！")
+        XCTAssertEqual(app.staticTexts["textView"].label, "0拍ずれたよ！")
     }
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

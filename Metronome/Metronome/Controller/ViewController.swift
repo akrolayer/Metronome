@@ -28,16 +28,19 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     
     var timer:Timer!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let bpmString = String(UserDefaults.standard.string(forKey: "BPM") ?? "60")
+        let beatString = String(UserDefaults.standard.string(forKey: "beat") ?? "4")
         pickerView.delegate = self
         pickerView.dataSource = self
         //pickerView.selectRow(60, inComponent: 0, animated: false)
-        pickerView.selectRow(0, inComponent: 0, animated: false)
+        pickerView.selectRow(Int(bpmString)! - 60, inComponent: 0, animated: false)
+        pickerView.selectRow(Int(beatString)! / 4 - 1, inComponent: 1, animated: false)
         pickerView.accessibilityIdentifier = "picker"
         pickerView.isAccessibilityElement = true
-        
+
         let toolbar = UIToolbar(frame:CGRect(x: 0, y: UIScreen.main.bounds.size.height, width:UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width / 4))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
         doneItem.accessibilityIdentifier = "done"
@@ -50,8 +53,8 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
         
         //BPMTextField.text = "120"
         //beatTextField.text = "4"
-        BPMTextField.text = "60"
-        beatTextField.text = "4"
+        BPMTextField.text = bpmString
+        beatTextField.text = beatString
         BPMLabel.text = BPMTextField.text
         // Do any additional setup after loading the view.
     }
@@ -130,8 +133,11 @@ class ViewController: UIViewController ,UIPickerViewDelegate, UIPickerViewDataSo
     @objc func done() {
         BPMTextField.endEditing(true)
         beatTextField.endEditing(true)
+
         BPMTextField.text = String(bpmArray[pickerView.selectedRow(inComponent: 0)])
         beatTextField.text = String(beatArray[pickerView.selectedRow(inComponent: 1)])
+        UserDefaults.standard.set(BPMTextField.text,forKey: "BPM")
+        UserDefaults.standard.set(beatTextField.text,forKey: "beat")
         BPMLabel.text! = calcBPM()
     }
 }

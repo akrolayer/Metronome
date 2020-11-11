@@ -190,6 +190,14 @@
                                 <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ベストスコア：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeG-g0-tpI">
+                                <rect key="frame" x="0.0" y="358" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="resultLabel"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="xUc-29-oDA"/>
@@ -198,6 +206,7 @@
                     <connections>
                         <outlet property="descLabel" destination="IFm-zv-0dj" id="aJc-UA-ZUQ"/>
                         <outlet property="resultLabel" destination="s7I-CT-k6m" id="Mbd-eV-NlI"/>
+                        <outlet property="scoreLabel" destination="eeG-g0-tpI" id="FVl-3g-6wE"/>
                         <outlet property="startButton" destination="J38-lj-AP7" id="2Eh-dD-H7I"/>
                         <outlet property="stopButton" destination="soc-3K-mw2" id="CA5-jm-AUG"/>
                     </connections>
